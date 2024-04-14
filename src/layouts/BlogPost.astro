@@ -13,16 +13,15 @@ interface Props {
 
 const { post } = Astro.props
 const {
-	data: { description, ogImage, publishDate, title, updatedDate },
-	slug
+	data: { description, publishDate, title, updatedDate },
 } = post
 
-const socialImage = ogImage ?? `/og-image/${slug}.png`
+/* const socialImage = ogImage ?? `/og-image/${slug}.png` */
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString()
 const { headings } = await post.render()
 ---
 
-<PageLayout meta={{ articleDate, description, ogImage: socialImage, title }}>
+<PageLayout meta={{ articleDate, description, title }}>
 	<div class='w-full'>
 		<Button title='Back' href='/blog' style='button'>
 			<svg
